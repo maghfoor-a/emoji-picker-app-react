@@ -3,10 +3,10 @@ import { useState } from "react";
 export default function EmojiPicker(): JSX.Element {
   const [emojiFromCurrentRender, queueRerenderWithNewEmoji] = useState("😊");
   const [currentFavouriteEmoji, queueRerenderwithNewFavouriteEmoji] =
-    useState("");
+    useState<string[]>([]);
 
   const handleStoreCurrentEmoji = () => {
-    queueRerenderwithNewFavouriteEmoji(emojiFromCurrentRender);
+    queueRerenderwithNewFavouriteEmoji([...currentFavouriteEmoji, emojiFromCurrentRender,]);
   };
 
   const handleBigSmile = () => {
@@ -28,7 +28,8 @@ export default function EmojiPicker(): JSX.Element {
   return (
     <>
       <h1>FAVOURITE EMOJI PICKER</h1>
-      <p>Your Favourite Emoji: {currentFavouriteEmoji}</p>
+      <p>Your Favourite Emoji: {currentFavouriteEmoji.map((emoji, i) => <li key= {i}>{emoji}</li>)}</p>
+
       <p>Your Current Emoji: {emojiFromCurrentRender}</p>
       <button onClick={handleBigSmile}>😁</button>
       &nbsp;
