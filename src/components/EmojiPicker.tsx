@@ -33,8 +33,8 @@ export default function EmojiPicker(): JSX.Element {
     <>
       <h1>FAVOURITE EMOJI PICKER</h1>
       <p>
-        Your Favourite Emoji:{" "}
-        {currentFavouriteEmoji.map((emoji, i) => (
+        Your Top 5 Favourite Emojis:
+        {(currentFavouriteEmoji.slice(-5)).map((emoji, i) => (
           <li key={i}>{emoji}</li>
         ))}
       </p>
